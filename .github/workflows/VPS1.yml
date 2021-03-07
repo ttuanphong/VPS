@@ -23,4 +23,5 @@ jobs:
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "TuanPhong1510" -Force)
     - name: Create Tunnel
       run: .\ngrok\ngrok.exe tcp 3389
-      echo IP: curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url
+    - name: IP:
+      run: curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url
